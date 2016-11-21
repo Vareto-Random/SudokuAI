@@ -1,7 +1,7 @@
 import time
 
-class Problem(object):
 
+class Problem(object):
     def __init__(self, initial):
         self.initial = initial
         self.type = len(initial) # Defines board type, either 6x6 or 9x9
@@ -83,6 +83,7 @@ class Problem(object):
 
         return options # Return spot's viable options
 
+
 def backtracking(board):
     problem = Problem(board)
     if problem.goal_test(board):
@@ -102,6 +103,7 @@ def backtracking(board):
             board[row][column] = 0 # Otherwise backtracks
 
     return None
+
 
 def solve_bt(board):
 

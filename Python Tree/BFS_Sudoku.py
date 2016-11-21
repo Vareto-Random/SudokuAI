@@ -84,7 +84,6 @@ class Problem(object):
                         block_total += state[row + block_row][column + block_column]
                 if block_total != total:
                     return False
-
         return True
 
 
@@ -122,7 +121,7 @@ def BFS(problem):
     counterF += 1
 
     # Loop until all nodes are explored or solution found
-    while frontier.qsize() != 0:
+    while frontier.qsize():
         node = frontier.get()
         children = node.expand(problem)
         counterE += 1
