@@ -1,8 +1,8 @@
 import copy
 import time
 
-class Problem(object):
 
+class Problem(object):
     def __init__(self, initial):
         self.initial = initial
         self.type = len(initial) # Defines board type, either 6x6 or 9x9
@@ -91,8 +91,8 @@ class Problem(object):
             new_state[row][column] = number
             yield new_state
 
-class Node:
 
+class Node:
     def __init__(self, state):
         self.state = state
 
@@ -100,21 +100,37 @@ class Node:
         # Return list of valid states
         return [Node(state) for state in problem.actions(self.state)]
 
+
 def DFS(problem):
+    # Keeping record of frontier and explored nodes
+    counterF = 0;
+    counterE = 0;
+
+    # Create initial node of problem tree holding original board
     start = Node(problem.initial)
+    # Check if original board is correct and immediately return if valid
     if problem.goal_test(start.state):
+        print ("Nodes in frontier: " + str(counterF))
+        print ("Nodes explored: " + str(counterE))
         return start.state
 
     stack = []
     stack.append(start) # Place initial node onto the stack
+    counterF += 1
 
+    # Loop until all nodes are explored or solution found
     while stack:
         node = stack.pop()
+        counterE += 1
         if problem.goal_test(node.state):
+            print ("Nodes in frontier: " + str(counterF))
+            print ("Nodes explored: " + str(counterE))
             return node.state
-        stack.extend(node.expand(problem)) # Add viable states onto the stack
-
+        children = node.expand(problem)
+        counterF += len(children)
+        stack.extend(children)
     return None
+
 
 def solve_dfs(board):
     print ("\nSolving with DFS...")

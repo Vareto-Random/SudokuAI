@@ -2,8 +2,8 @@ from Queue import Queue
 import copy
 import time
 
-class Problem(object):
 
+class Problem(object):
     def __init__(self, initial):
         self.initial = initial
         self.type = len(initial) # Defines board type, either 6x6 or 9x9
@@ -40,7 +40,6 @@ class Problem(object):
         # Filter with valid values based on quadrant
         row_start = int(row/self.height)*self.height
         column_start = int(column/3)*3
-        
         for block_row in range(0, self.height):
             for block_column in range(0,3):
                 in_block.append(state[row_start + block_row][column_start + block_column])
@@ -51,7 +50,6 @@ class Problem(object):
 
     # Returns updated board after adding new valid value
     def result(self, state, action):
-
         play = action[0]
         row = action[1]
         column = action[2]
@@ -64,7 +62,6 @@ class Problem(object):
 
     # Use sums of each row, column and quadrant to determine validity of board state
     def goal_test(self, state):
-
         # Expected sum of each row, column or quadrant.
         total = sum(range(1, self.type+1))
 
@@ -72,30 +69,26 @@ class Problem(object):
         for row in range(self.type):
             if (len(state[row]) != self.type) or (sum(state[row]) != total):
                 return False
-
             column_total = 0
             for column in range(self.type):
                 column_total += state[column][row]
-
-            if (column_total != total):
+            if column_total != total:
                 return False
 
         # Check quadrants and return false if total is invalid
         for column in range(0,self.type,3):
             for row in range(0,self.type,self.height):
-
                 block_total = 0
                 for block_row in range(0,self.height):
                     for block_column in range(0,3):
                         block_total += state[row + block_row][column + block_column]
-
-                if (block_total != total):
+                if block_total != total:
                     return False
 
         return True
 
-class Node:
 
+class Node:
     def __init__(self, state, action=None):
         self.state = state
         self.action = action
@@ -110,27 +103,38 @@ class Node:
         next = problem.result(self.state, action)
         return Node(next, action)
 
+
 def BFS(problem):
+    # Keeping record of frontier and explored nodes
+    counterF = 0;
+    counterE = 0;
+
     # Create initial node of problem tree holding original board
     node = Node(problem.initial)
     # Check if original board is correct and immediately return if valid
     if problem.goal_test(node.state):
+        print ("Nodes in frontier: " + str(counterF))
+        print ("Nodes explored: " + str(counterE))
         return node
 
     frontier = Queue()
     frontier.put(node)
+    counterF += 1
 
     # Loop until all nodes are explored or solution found
-    while (frontier.qsize() != 0):
-
+    while frontier.qsize() != 0:
         node = frontier.get()
-        for child in node.expand(problem):
+        children = node.expand(problem)
+        counterE += 1
+        for child in children:
             if problem.goal_test(child.state):
+                print ("Nodes in frontier: " + str(counterF))
+                print ("Nodes explored: " + str(counterE))
                 return child
-
             frontier.put(child)
-
+            counterF += 1
     return None
+
 
 def solve_bfs(board):
     print ("\nSolving with BFS...")
