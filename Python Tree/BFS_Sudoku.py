@@ -137,10 +137,12 @@ def BFS(problem):
 
 def solve_bfs(board):
     print ("\nSolving with BFS...")
+
     start_time = time.time()
 
     problem = Problem(board)
     solution = BFS(problem)
+
     elapsed_time = time.time() - start_time
 
     if solution:

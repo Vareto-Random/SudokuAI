@@ -3,11 +3,10 @@ import numpy as np
 from operator import or_
 
 
-
-
 # -------------------- sudoku functions from CLI ----------------------
 
 def solveBacktracking(grid, counter=0):
+    print ("solveBacktracking")
     row, column = findUnassignedPlaces(grid)
     counter += 1
     if row == -2 and column == -2:
@@ -23,7 +22,9 @@ def solveBacktracking(grid, counter=0):
             grid[row,column] = 0
     return False
 
+
 def solveBacktrackingHeuritic(grid, counter=0):
+    print ("solveBacktrackingHeuritic")
     row, column = findMostConstraintVariable(grid)
     counter += 1
     if row == -2 and column == -2:
@@ -39,7 +40,7 @@ def solveBacktrackingHeuritic(grid, counter=0):
 
 
 def solveForwardCheckingCLI(grid):
-
+    # print ("solveForwardCheckingCLI")
     row, column = findMostConstraintVariable(grid)
     if row == -2 and column == -2 :
         showSolvedGrid(grid)
@@ -48,7 +49,8 @@ def solveForwardCheckingCLI(grid):
     for proposedObjectFromDomain in actualDomain:
         grid[row,column] = proposedObjectFromDomain
         domainWipeOut = False
-        for variable in getUnassignedFromConstraints(grid.copy(), row, column):
+        unassigned = getUnassignedFromConstraints(grid.copy(), row, column)
+        for variable in unassigned:
             if fc(variable.grid, variable.row, variable.column):
                 domainWipeOut = True
                 break
@@ -57,8 +59,9 @@ def solveForwardCheckingCLI(grid):
                 return True
         grid[row,column] = 0
 
-def solveForwardCheckingCLIHeurisctic(grid):
 
+def solveForwardCheckingCLIHeurisctic(grid):
+    print ("solveForwardCheckingCLIHeurisctic")
     #row, column = findUnassignedPlaces(grid)
     row, column = findMostConstraintVariable(grid)
     if row == -2 and column == -2 :
@@ -229,7 +232,6 @@ def isCorrect(grid, row, column, proposedNumber):
     return isCorrectInRow(grid, row, proposedNumber) \
            and isCorrectInColumn(grid, column, proposedNumber) \
            and correctInBox
-
 
 
 def isCorrectInRow(grid, row,  proposedNumber):
