@@ -88,12 +88,10 @@ def backtracking(board):
     problem = Problem(board)
     if problem.goal_test(board):
         return board
-
     # Get first empty spot
     row,column = problem.get_spot(problem.type, board)
     # Get spot's viable options
     options = problem.actions(board, row, column)
-
     for option in options:
         board[row][column] = option # Try viable option
         # Recursively fill in the board
@@ -101,7 +99,6 @@ def backtracking(board):
             return board # Returns board if success 
         else:
             board[row][column] = 0 # Otherwise backtracks
-
     return None
 
 

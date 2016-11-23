@@ -49,16 +49,7 @@ def runTestSudoku(N):
 
 
 start=time.time()
-#input = DataProvider.generateSudoku9x9(10)
-input = np.array([[0,0,9,0,7,0,0,0,5],
-      [0,0,2,1,0,0,9,0,0],
-      [1,0,0,0,2,8,0,0,0],
-      [0,7,0,0,0,5,0,0,1],
-      [0,0,8,5,1,0,0,0,0],
-      [0,5,0,0,0,0,3,0,0],
-      [0,0,0,0,0,3,0,0,6],
-      [8,0,0,0,0,0,0,0,0],
-      [2,1,0,0,0,0,0,8,7]])
+input = DataProvider.generateSudoku9x9(33)
 solved = SudokuSolver.solveForwardCheckingCLI(input)
 end=time.time()
 print "time = ", end-start
