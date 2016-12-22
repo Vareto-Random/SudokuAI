@@ -4,7 +4,7 @@ from BDFS_Sudoku import solve_bt
 
 # Thanks to http://sudopedia.enjoysudoku.com/Test_Cases.html
 
-print ("\n\nTesting on 6x6 board...")
+print ("\n\nTesting on 6x6 board...20 blanks")
 board = [[1,5,0,0,4,0],
       [2,4,0,0,5,6],
       [4,0,0,0,0,3],
@@ -20,7 +20,7 @@ solve_bfs(board)
 solve_dfs(board)
 solve_bt(board)
 
-print ("\n\nTesting on 6x6 board...")
+print ("\n\nTesting on 6x6 board...19 blanks")
 board = [[0,0,0,0,4,0],
       [5,6,0,0,0,0],
       [3,0,2,6,5,4],
@@ -36,7 +36,7 @@ solve_bfs(board)
 solve_dfs(board)
 solve_bt(board)
 
-print ("\n\nTesting on invalid 9x9 board...")
+print ("\n\nTesting on invalid 9x9 board...57 blanks")
 board = [[0,0,9,0,7,0,0,0,5],
       [0,0,2,1,0,0,9,0,0],
       [1,0,0,0,2,8,0,0,0],
@@ -55,7 +55,7 @@ solve_bfs(board)
 solve_dfs(board)
 solve_bt(board)
 
-print ("\n\nTesting on 9x9 board...")
+print ("\n\nTesting on 9x9 board...48 blanks")
 board = [[0,0,0,8,4,0,6,5,0],
       [0,8,0,0,0,0,0,0,9],
       [0,0,0,0,0,5,2,0,1],
@@ -93,7 +93,7 @@ solve_bfs(board)
 solve_dfs(board)
 solve_bt(board)
 
-print ("\n\nTesting on 9x9 board...")
+print ("\n\nTesting on 9x9 board...20 blanks")
 board = [[3,0,5,4,2,0,8,1,0],
       [4,8,7,9,0,1,5,0,6],
       [0,2,9,0,5,6,3,7,4],
@@ -112,7 +112,7 @@ solve_bfs(board)
 solve_dfs(board)
 solve_bt(board)
 
-print ("\n\nTesting on 9x9 board...")
+print ("\n\nTesting on 9x9 board...54 blanks")
 board = [[0,0,2,0,3,0,0,0,8],
       [0,0,0,0,0,8,0,0,0],
       [0,3,1,0,2,0,0,0,0],
@@ -131,7 +131,7 @@ solve_bfs(board)
 solve_dfs(board)
 solve_bt(board)
 
-print ("\n\nTesting unsolvable quadrant on a 9x9 board...")
+print ("\n\nTesting unsolvable quadrant on a 9x9 board...54 blanks")
 board = [[0,9,0,3,0,0,0,0,1],
       [0,0,0,0,8,0,0,4,6],
       [0,0,0,0,0,0,8,0,0],
@@ -150,7 +150,7 @@ solve_bfs(board)
 solve_dfs(board)
 solve_bt(board)
 
-print ("\n\nTesting on 9x9 board...")
+print ("\n\nTesting on 9x9 board...53 blanks")
 board = [[0,3,9,0,0,0,1,2,0],
       [0,0,0,9,0,7,0,0,0],
       [8,0,0,4,0,1,0,0,6],
@@ -169,7 +169,7 @@ solve_bfs(board)
 solve_dfs(board)
 solve_bt(board)
 
-print ("\n\nTesting on 16x16 board...")
+print ("\n\nTesting on 16x16 board...64 blanks")
 board=[[0,15,11,1,6,2,10,14,12,0,13,3,16,0,4,5],
 [10,6,3,16,12,5,0,4,14,15,1,0,2,11,0,13],
 [14,5,0,0,11,3,15,13,0,2,16,4,12,10,1,6],

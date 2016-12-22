@@ -48,8 +48,19 @@ def runTestSudoku(N):
     print "finished"
 
 
-start=time.time()
-input = DataProvider.generateSudoku9x9(33)
-solved = SudokuSolver.solveForwardCheckingCLI(input)
-end=time.time()
-print "time = ", end-start
+inputs09x09 = [DataProvider.generateSudoku9x9(81 - index) for index in range(0,81,9)]
+inputs16x16 = [DataProvider.generateSudoku16x16(256 - index) for index in range(0,256,16)]
+
+for mat in inputs09x09:
+    start = time.time()
+    solved = SudokuSolver.solveForwardCheckingCLI(mat)
+    end=time.time()
+    print "time = ", end-start
+
+for mat in inputs16x16:
+    start = time.time()
+    solved = SudokuSolver.solveForwardCheckingCLI(mat)
+    end=time.time()
+    print "time = ", end-start
+
+
