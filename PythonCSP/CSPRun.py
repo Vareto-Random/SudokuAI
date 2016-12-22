@@ -56,11 +56,13 @@ for mat in inputs09x09:
     solved = SudokuSolver.solveForwardCheckingCLI(mat)
     end=time.time()
     print "time = ", end-start
+    print '\n'
 
 for mat in inputs16x16:
     start = time.time()
     solved = SudokuSolver.solveForwardCheckingCLI(mat)
     end=time.time()
     print "time = ", end-start
+    print '\n'
 
 
